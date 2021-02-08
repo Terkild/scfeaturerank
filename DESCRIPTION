@@ -1,0 +1,17 @@
+Package: scfeaturerank
+Type: Package
+Title: Feature Rank plot for single-cell analysis
+Version: 0.1.0
+Author: Terkild Brink Buus
+Maintainer: Terkild Brink Buus <terkild.buus@sund.ku.dk>
+Description: Functions for creating Feature Rank plots (or "titration plots").
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Imports: 
+  dplyr, 
+  ggplot2, 
+  magrittr, 
+  patchwork,
+  cowplot
