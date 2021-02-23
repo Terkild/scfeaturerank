@@ -18,10 +18,10 @@ biexp_trans <- function(lim = 5, decade.size = lim){
     if (all(x <= lim)) {
       scales::pretty_breaks()(x)
     } else if (all(x > lim)) {
-      scales::breaks_log(10)(x)
+      scales::breaks_log(5)(x)
     } else {
       unique(c(scales::pretty_breaks()(c(x[1],lim)),
-               scales::breaks_log(10)(c(lim, x[2]))))
+               scales::breaks_log(5)(c(lim, x[2]))))
     }
   }
   scales::trans_new(paste0("biexp-",format(lim)), trans, inv, breaks)

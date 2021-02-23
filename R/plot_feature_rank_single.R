@@ -15,7 +15,7 @@
 #' @param barplot_show_total Should total sums be displayed within barplot? (most meaningful for non-normalized counts)
 #' @param barplot_total_fontface Font face for total in barplot. Default "bold".
 #' @param barplot_show_ymax Should maximum y-value tick be shown for barplot? (most meaningful for non-normalized counts)
-#' @param barplot_ymax_size Font size for ymax text
+#' @param barplot_stat      Should the barplot show "average" (default) or "sum" of counts?
 #' @param barplot_alpha     Barplot alpha (can be reduced to make total count more readable)
 #' @param show_density      Should density plot be drawn?
 #' @param show_barplot      Should barplot be drawn?
@@ -60,6 +60,7 @@ plot_feature_rank_single <- function(value,
                                      barplot_show_total=TRUE,
                                      barplot_total_fontface="bold",
                                      barplot_show_ymax=TRUE,
+                                     barplot_stat="average",
                                      barplot_alpha=1,
                                      show_density=TRUE,
                                      show_barplot=TRUE,
@@ -203,9 +204,15 @@ plot_feature_rank_single <- function(value,
   ### BAR PLOT
   if(show_barplot == TRUE){
     barplotData <- plotData %>%
-      group_by(group, barplot_group, barplot_stack) %>%
+      group_by(group) %>%
+      mutate(total=sum(value)) %>%
+      group_by(group, total, barplot_group, barplot_stack) %>%
       summarize(value=sum(value))
 
+    if(barplot_stat == "average"){
+      barplotData <- barplotData %>%
+        mutate(value=value/total)
+    }
 
     if(!is.null(barplot_stack_color)){
       scale_fill <- scale_fill_manual(values=barplot_stack_color)

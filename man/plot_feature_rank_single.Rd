@@ -20,6 +20,7 @@ plot_feature_rank_single(
   barplot_show_total = TRUE,
   barplot_total_fontface = "bold",
   barplot_show_ymax = TRUE,
+  barplot_stat = "average",
   barplot_alpha = 1,
   show_density = TRUE,
   show_barplot = TRUE,
@@ -75,6 +76,8 @@ plot_feature_rank_single(
 
 \item{barplot_show_ymax}{Should maximum y-value tick be shown for barplot? (most meaningful for non-normalized counts)}
 
+\item{barplot_stat}{Should the barplot show "average" (default) or "sum" of counts?}
+
 \item{barplot_alpha}{Barplot alpha (can be reduced to make total count more readable)}
 
 \item{show_density}{Should density plot be drawn?}
@@ -116,8 +119,6 @@ plot_feature_rank_single(
 \item{labels}{Named vector of axis labels (set element to NULL to remove axis title). Default: c("x.rank"="Value", "y.rank"="Rank", "y.density"="Density", "y.barplot"="Sum")}
 
 \item{...}{Passed on to plot_feature_rank_combine(). Useful for setting relative component sizes.}
-
-\item{barplot_ymax_size}{Font size for ymax text}
 
 \item{rank_normalized}{Should ranks be normalized by group (TRUE) or show as absolute counts (FALSE). Default TRUE.}
 }
