@@ -20,7 +20,8 @@ plot_feature_rank_single(
   barplot_show_total = TRUE,
   barplot_total_fontface = "bold",
   barplot_show_ymax = TRUE,
-  barplot_stat = "average",
+  barplot_stat_FUN = sum,
+  barplot_stat_by = "group",
   barplot_alpha = 1,
   show_density = TRUE,
   show_barplot = TRUE,
@@ -76,7 +77,9 @@ plot_feature_rank_single(
 
 \item{barplot_show_ymax}{Should maximum y-value tick be shown for barplot? (most meaningful for non-normalized counts)}
 
-\item{barplot_stat}{Should the barplot show "average" (default) or "sum" of counts?}
+\item{barplot_stat_FUN}{Should the barplot show "median" or "sum" (default) of counts?}
+
+\item{barplot_stat_by}{Should stat be normalized to "group" (default) or "none" to show raw value.}
 
 \item{barplot_alpha}{Barplot alpha (can be reduced to make total count more readable)}
 
